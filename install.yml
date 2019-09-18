@@ -1,0 +1,20 @@
+# This file should be committed to your app code.
+version: 1.0
+# This should match the app - package name in your setup.py
+name: bokeh_tutorial
+
+requirements:
+  # Putting in a skip true param will skip the entire section. Ignoring the option will assume it be set to False
+  skip: false
+  conda:
+    channels:
+      - conda-forge
+      - bokeh/label/dev
+    packages:
+      - bokeh>=1.3.5*
+      - param
+      - panel
+
+  pip:
+
+post:
