@@ -32,7 +32,7 @@ def home_handler(document):
             data = df
         else:
             data = df.rolling(f'{new}D').mean()
-        source.data = ColumnDataSource(data=data).data
+        source.data = dict(ColumnDataSource(data=data).data)
 
     slider.on_change("value", callback)
 
