@@ -1,23 +1,19 @@
-from bokeh.embed import server_document
+import panel as pn
 from bokeh.layouts import column
-from bokeh.models import ColumnDataSource, Slider
+from bokeh.models import ColumnDataSource, Slider, Markup
 from bokeh.plotting import figure
 from bokeh.sampledata.sea_surface_temperature import sea_surface_temperature
-from django.shortcuts import render
-import panel as pn
-from tethys_sdk.permissions import login_required
-from tethys_sdk.gizmos import Button
+
+from tethys_sdk.routing import handler
+
 from .param_model import ShapeViewer
 
 
-@login_required()
-def home(request):
-    script = server_document(request.build_absolute_uri())
-    context = {'script': script}
-    return render(request, 'bokeh_tutorial/home.html', context)
-
-
-def home_handler(document):
+@handler(
+    # app_package='bokeh_tutorial',
+    template="bokeh_tutorial/home.html",
+)
+def home(document):
     df = sea_surface_temperature.copy()
     source = ColumnDataSource(data=df)
 
@@ -36,16 +32,15 @@ def home_handler(document):
 
     slider.on_change("value", callback)
 
+    # document.add_root(column(Markup(text='<h1>Bokeh Integration Example</h1>'), slider, plot))  # TODO
     document.add_root(column(slider, plot))
 
-@login_required()
-def shapes_with_panel(request):
-    script = server_document(request.build_absolute_uri())
-    context = {'script': script}
-    return render(request, "bokeh_tutorial/shapes.html", context)
+
+@handler(
+    app_package='bokeh_tutorial',
+)
+def shapes(document):
+    viewer = ShapeViewer().panel()
+    viewer.server_doc(document)
 
 
-def shapes_handler(document):
-    viewer = ShapeViewer()
-    panel = pn.Row(viewer.param, viewer.panel())
-    panel.server_doc(document)

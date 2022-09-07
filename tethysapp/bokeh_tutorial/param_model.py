@@ -59,5 +59,21 @@ class ShapeViewer(param.Parameterized):
     def title(self):
         return '## %s (radius=%.1f)' % (type(self.shape).__name__, self.shape.radius)
 
+    @param.depends('shape')
+    def controls(self):
+        return pn.Param(self.shape)
+
     def panel(self):
-        return pn.Column(self.title, self.view)
+        expand_layout = pn.Column()
+
+        return pn.Column(
+            pn.pane.HTML('<h1>Bokeh Integration Example using Param and Panel</h1>'),
+            pn.Row(
+                pn.Column(
+                    pn.panel(self.param, expand_button=False, expand=True, expand_layout=expand_layout),
+                    "#### Subobject parameters:",
+                    expand_layout),
+                pn.Column(self.title, self.view)
+            ),
+            sizing_mode='stretch_width',
+        )
