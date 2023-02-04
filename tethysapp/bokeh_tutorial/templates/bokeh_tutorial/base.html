@@ -15,9 +15,9 @@
 {% block app_navigation_items %}
   {% url 'bokeh_tutorial:home' as home_url %}
   {% url 'bokeh_tutorial:shapes' as shapes_url %}
-  <li class="title">Examples</li>
-  <li class="{% if request.path == home_url %}active{% endif %}"><a href="{{ home_url }}">Sea Surface</a></li>
-  <li class="{% if request.path == shapes_url %}active{% endif %}"><a href="{{ shapes_url }}">Shapes</a></li>
+  <li class="nav-item title">Examples</li>
+  <li class="nav-item"><a class="nav-link{% if request.path == home_url %} active{% endif %}" href="{{ home_url }}">Sea Surface</a></li>
+  <li class="nav-item"><a class="nav-link{% if request.path == shapes_url %} active{% endif %}" href="{{ shapes_url }}">Shapes</a></li>
 {% endblock %}
 
 {% block app_content %}
