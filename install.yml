@@ -9,9 +9,11 @@ requirements:
   conda:
     channels:
       - conda-forge
+      - erdc/label/dev
     packages:
       - panel
       - param
+      - bokeh-django
 
   pip:
 
