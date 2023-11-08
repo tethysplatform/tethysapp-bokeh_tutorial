@@ -1,5 +1,4 @@
-from tethys_sdk.base import TethysAppBase, url_map_maker
-from tethys_sdk.routing import register_controllers
+from tethys_sdk.base import TethysAppBase
 
 
 class BokehTutorial(TethysAppBase):

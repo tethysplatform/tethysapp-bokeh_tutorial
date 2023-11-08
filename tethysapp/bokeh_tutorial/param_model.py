@@ -16,6 +16,8 @@ class Shape(param.Parameterized):
         return [], []
 
     def view(self):
+        if not self.figure.renderers:
+            self.__init__(name=self.name)
         return self.figure
 
 

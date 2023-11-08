@@ -1,6 +1,5 @@
-import panel as pn
 from bokeh.layouts import column
-from bokeh.models import ColumnDataSource, Slider, Markup
+from bokeh.models import ColumnDataSource, Slider
 from bokeh.plotting import figure
 from bokeh.sampledata.sea_surface_temperature import sea_surface_temperature
 
@@ -10,7 +9,6 @@ from .param_model import ShapeViewer
 
 
 @handler(
-    # app_package='bokeh_tutorial',
     template="bokeh_tutorial/home.html",
 )
 def home(document):
@@ -32,7 +30,6 @@ def home(document):
 
     slider.on_change("value", callback)
 
-    # document.add_root(column(Markup(text='<h1>Bokeh Integration Example</h1>'), slider, plot))  # TODO
     document.add_root(column(slider, plot))
 
 

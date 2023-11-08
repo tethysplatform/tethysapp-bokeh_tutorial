@@ -11,9 +11,10 @@ requirements:
       - conda-forge
       - erdc/label/dev
     packages:
+      - bokeh
+      - bokeh-django
       - panel
       - param
-      - bokeh-django
 
   pip:
 
