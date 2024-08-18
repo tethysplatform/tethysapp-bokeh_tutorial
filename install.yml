@@ -1,5 +1,7 @@
 # This file should be committed to your app code.
-version: 1.0
+version: 1.1
+# This should be greater or equal to your tethys-platform in your environment
+tethys_version: ">=4.0.0"
 # This should match the app - package name in your setup.py
 name: bokeh_tutorial
 
@@ -9,13 +11,14 @@ requirements:
   conda:
     channels:
       - conda-forge
-      - erdc/label/dev
     packages:
       - bokeh
-      - bokeh-django
+      - bokeh_django
+      - bokeh_sampledata
       - panel
       - param
-
   pip:
+
+  npm:
 
 post:

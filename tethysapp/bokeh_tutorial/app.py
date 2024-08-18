@@ -1,18 +1,17 @@
 from tethys_sdk.base import TethysAppBase
 
 
-class BokehTutorial(TethysAppBase):
+class App(TethysAppBase):
     """
     Tethys app class for Bokeh Tutorial.
     """
-
     name = 'Bokeh Tutorial'
-    index = 'home'
+    description = ''
     package = 'bokeh_tutorial'  # WARNING: Do not change this value
+    index = 'home'
     icon = f'{package}/images/icon.gif'
     root_url = 'bokeh-tutorial'
-    color = '#2980b9'
-    description = ''
+    color = '#27ae60'
     tags = ''
     enable_feedback = False
     feedback_emails = []
