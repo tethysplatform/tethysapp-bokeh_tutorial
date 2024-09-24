@@ -5,10 +5,12 @@ from bokeh.sampledata.sea_surface_temperature import sea_surface_temperature
 
 from tethys_sdk.routing import handler
 
+from .app import App
 from .param_model import ShapeViewer
 
+
 @handler(
-    template="bokeh_tutorial/home.html",
+    template=f"{App.package}/home.html",
 )
 def home(document):
     df = sea_surface_temperature.copy()
@@ -31,14 +33,11 @@ def home(document):
 
     document.add_root(column(slider, plot))
 
+
 @handler(
-    app_package='bokeh_tutorial',
+    app_package=App.package,
 )
 def shapes(document):
-    breakpoint()
-    
-    request = document.session_context.request
-
     viewer = ShapeViewer().panel()
     viewer.server_doc(document)
 

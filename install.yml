@@ -13,7 +13,7 @@ requirements:
       - conda-forge
     packages:
       - bokeh
-      - bokeh_django
+      - bokeh-django
       - bokeh_sampledata
       - panel
       - param
